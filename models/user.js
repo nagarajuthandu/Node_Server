@@ -2,7 +2,7 @@ let mongoose=require("mongoose")
 let userSchema=new mongoose.Schema(
     {
         username:String,
-        pasword:String,
+        password:String,
         mobile:Number
     }
 )
