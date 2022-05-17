@@ -34,7 +34,7 @@ let signin=function(req,res){
             if(data)
             {
                 console.log(data)
-                res.status(200).json({token:generatetoken(user)})
+                res.status(200).json({token:generatetoken(user),username:result.username})
             }
             else
             {
@@ -53,7 +53,7 @@ let users=function(req,res){
 }
 let run=function(req,res)
 {
-    
+    console.log("in run")
     var data = JSON.stringify({
                "code":req.body.code,
                "language":req.body.language,

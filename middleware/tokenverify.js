@@ -2,9 +2,10 @@ let jwt=require("jsonwebtoken")
 let secrete="mysecrete"
 exports.verify=(req,res,next)=>
 {
+    // console.log(req.headers.authorization)
     let token=JSON.parse(req.headers.authorization)
-    
-      
+  
+    console.log(token)  
     if(!token)
     {
         res.status(403).json({error:"please provide token"})
@@ -15,10 +16,10 @@ exports.verify=(req,res,next)=>
             if(err){
                 console.log(err)
             }
+            if(value)
             {
             next()
-    
-    }
+            }
     })
     
 }
