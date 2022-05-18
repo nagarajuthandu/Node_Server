@@ -1,5 +1,6 @@
 let db=require("../configs/db")
-let user=require("../models/user")
+let {user}=require("../models/user")
+let {question}=require("../models/question")
 let jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt");
 let mongoose=require("mongoose")
@@ -51,6 +52,10 @@ let users=function(req,res){
         user.find({}).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
         
 }
+let getqn = function(req,res){
+    question.find({}).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
+}
+
 let run=function(req,res)
 {
     console.log("in run")
@@ -80,4 +85,4 @@ let run=function(req,res)
     }); 
 }
 
-module.exports={signup,signin,users,run}
+module.exports={signup,signin,users,run,getqn}
