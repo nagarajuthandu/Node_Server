@@ -1,6 +1,6 @@
 let db=require("../configs/db")
-let teacher=require("../models/teacher")
-let question=require("../models/question")
+let {teacher}=require("../models/teacher")
+let {questions}=require("../models/question")
 let jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt");
 let mongoose=require("mongoose")
@@ -14,7 +14,7 @@ function generatetoken(user){
 let signup=function(req,res){
     var salt=bcrypt.genSaltSync(10);
     var password=bcrypt.hashSync(req.body.password,salt);
-    console.log(password)
+    
     const teacher1=new teacher({
         username:req.body.username,
         password:password,
@@ -34,7 +34,7 @@ let signin=function(req,res){
             }
             if(data)
             {
-                console.log(data)
+                
                 res.status(200).json({token:generatetoken(data)})
             }
             else
@@ -49,7 +49,7 @@ let signin=function(req,res){
 }
 
 let addqn = function(req,res){
-    const qn = new question({
+    const qn = new questions({
         qid : req.body.id,
         question : req.body.question,
         desc : req.body.desc,
@@ -59,18 +59,18 @@ let addqn = function(req,res){
         hdop : req.body.hdop
     });
     qn.save().then(qn=>{
-        console.log("Successfuly Posted")
-        res.status(200).json({message : "Successfully posted"})})
+        console.log("Successfuly Added Qution")
+        res.status(200).json({message : "Successfuly Added Qution"})})
 }
 
 let deleteqn = function(req,res){
-    question.findOneAndDelete({qid : req.body.qid},{}).then(result =>{
+    questions.findOneAndDelete({qid : req.body.qid},{}).then(result =>{
         res.status(200).json({message : "Successfully deleted"})
     })
 }
 
 let getqn = function(req,res){
-    question.find({}).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
+    questions.find({}).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
 }
 
 module.exports={signup,signin,addqn,deleteqn,getqn}

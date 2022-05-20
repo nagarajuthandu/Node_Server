@@ -1,6 +1,6 @@
 let db=require("../configs/db")
 let {user}=require("../models/user")
-let {question}=require("../models/question")
+let {questions}=require("../models/question")
 let jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt");
 let mongoose=require("mongoose")
@@ -53,12 +53,12 @@ let users=function(req,res){
         
 }
 let getqn = function(req,res){
-    question.find({}).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
+    questions.find({}).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
 }
 
 let run=function(req,res)
 {
-    console.log("in run")
+    console.log(req.body.input)
     var data = JSON.stringify({
                "code":req.body.code,
                "language":req.body.language,
@@ -77,7 +77,7 @@ let run=function(req,res)
     
     axios(config)
     .then(function (response) {
-      console.log(response.data);
+    
       res.send(response.data)
     })
     .catch(function (error) {

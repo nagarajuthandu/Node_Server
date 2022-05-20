@@ -6,4 +6,6 @@ let teacherSchema=new mongoose.Schema(
         mobile:Number
     }
 )
-module.exports=mongoose.model("teacher",teacherSchema)
+
+let teacher=mongoose.model("teacher",teacherSchema)
+module.exports={teacher}

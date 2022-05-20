@@ -11,5 +11,5 @@ let questionSchema=new mongoose.Schema(
     }
 )
 
-let question = module.exports=mongoose.model("question",questionSchema)
-module.exports={question}
+let questions = module.exports=mongoose.model("questions",questionSchema)
+module.exports={questions}

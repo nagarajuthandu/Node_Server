@@ -5,7 +5,7 @@ exports.verify=(req,res,next)=>
     // console.log(req.headers.authorization)
     let token=JSON.parse(req.headers.authorization)
   
-    console.log(token)  
+      
     if(!token)
     {
         res.status(403).json({error:"please provide token"})
