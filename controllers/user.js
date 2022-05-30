@@ -77,8 +77,12 @@ let run=function(req,res)
     
     axios(config)
     .then(function (response) {
+    let result=response.data
     
-      res.send(response.data)
+        
+     
+     
+        res.send(response.data)
     })
     .catch(function (error) {
       console.log(error);

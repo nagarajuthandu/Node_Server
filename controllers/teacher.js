@@ -64,13 +64,20 @@ let addqn = function(req,res){
 }
 
 let deleteqn = function(req,res){
-    questions.findOneAndDelete({qid : req.body.qid},{}).then(result =>{
+    questions.findOneAndDelete({_id : req.params.id},{}).then(result =>{
         res.status(200).json({message : "Successfully deleted"})
     })
 }
 
-let getqn = function(req,res){
+let getqn = function(req,res)
+{
+   
+    questions.findById(req.params.id).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
+}
+let getqns = function(req,res)
+{
+   
     questions.find({}).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
 }
 
-module.exports={signup,signin,addqn,deleteqn,getqn}
+module.exports={signup,signin,addqn,deleteqn,getqn,getqns}

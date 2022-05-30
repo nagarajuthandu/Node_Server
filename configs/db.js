@@ -1,5 +1,5 @@
 let mongoose=require("mongoose")
-const url = `mongodb+srv://nagaraju:Thandus@cluster0.vwm7k.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const url = process.env.MONGO_URI;
 mongoose.connect(url)
 let db=mongoose.connection
 db.on("error",()=>{console.log("error in establishing connection")})
