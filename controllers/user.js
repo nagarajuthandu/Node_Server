@@ -68,7 +68,7 @@ let run=function(req,res)
     
     var config = {
       method: 'post',
-      url: 'https://codexweb.netlify.app/.netlify/functions/enforceCode',
+      url: 'https://compilersapi.herokuapp.com/',
       headers: { 
         'Content-Type': 'application/json'
       },
