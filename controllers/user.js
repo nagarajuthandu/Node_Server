@@ -34,8 +34,9 @@ let signin=function(req,res){
             }
             if(data)
             {
-                console.log(data)
+                
                 res.status(200).json({token:generatetoken(user),username:result.username})
+            
             }
             else
             {
@@ -58,17 +59,20 @@ let getqn = function(req,res){
 
 let run=function(req,res)
 {
-    console.log(req.body.input)
+    var result;
+    var testcase;
+       
     var data = JSON.stringify({
                "code":req.body.code,
                "language":req.body.language,
-               "input":req.body.input
+               "input":req.body.userip
                });
-    
-    
+      
     var config = {
       method: 'post',
       url: 'https://compilersapi.herokuapp.com/',
+    //   url: 'http://localhost:8080',
+
       headers: { 
         'Content-Type': 'application/json'
       },
@@ -77,16 +81,28 @@ let run=function(req,res)
     
     axios(config)
     .then(function (response) {
-    let result=response.data
+    result=response.data.output
+    if(result) {result=result.trim()}
     
-        
-     
-     
-        res.send(response.data)
+       
+    if(result==req.body.expop)
+    {
+        testcase="PASS"
+    }
+    else
+    {
+        testcase="FAIL"
+    }
+    res.status(200).json({result:result,testcase:testcase})
+  
     })
     .catch(function (error) {
       console.log(error);
     }); 
+
+    
+         
 }
+
 
 module.exports={signup,signin,users,run,getqn}
