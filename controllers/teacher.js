@@ -71,13 +71,17 @@ let deleteqn = function(req,res){
 }
 
 let getqn = function(req,res)
-{
-   
+{   
     questions.findById(req.params.id).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
 }
 let getqns = function(req,res)
 {
     questions.find({}).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
 }
+let updateqn = function(req,res){
+    console.log("ok")
+    console.log(req.params)
+    
+}
 
-module.exports={signup,signin,addqn,deleteqn,getqn,getqns}
+module.exports={signup,signin,addqn,deleteqn,getqn,getqns,updateqn}
