@@ -8,7 +8,7 @@ router.post("/login",teacher.signin)
 // router.post("/addqns",token.verify,teacher.addqns)
 router.post("/addqn",token.verify,teacher.addqn)
 // router.put("/updateqn",token.verify,teacher.updateqn)
-router.delete("/deleteqn/:id",token.verify,teacher.deleteqn)
+router.delete("/deleteqn/:_id",token.verify,teacher.deleteqn)
 router.get("/getqn/:id",token.verify,teacher.getqn)
 router.get("/getqns",token.verify,teacher.getqns)
 

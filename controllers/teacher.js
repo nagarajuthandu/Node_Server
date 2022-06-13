@@ -64,7 +64,8 @@ let addqn = function(req,res){
 }
 
 let deleteqn = function(req,res){
-    questions.findOneAndDelete({_id : req.params.id},{}).then(result =>{
+    
+    questions.findOneAndDelete({_id : req.params._id},{}).then(result =>{
         res.status(200).json({message : "Successfully deleted"})
     })
 }
@@ -76,7 +77,6 @@ let getqn = function(req,res)
 }
 let getqns = function(req,res)
 {
-   
     questions.find({}).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
 }
 
