@@ -79,9 +79,19 @@ let getqns = function(req,res)
     questions.find({}).then(result=>{res.json(result)}).catch(error=>{console.log(error)})
 }
 let updateqn = function(req,res){
-    console.log("ok")
-    console.log(req.params)
-    
+        questions.findOneAndUpdate({_id:req.params._id}, 
+        {question:req.body.question, 
+         desc:req.body.desc,
+         userip:req.body.userip,
+         expop:req.body.expop,
+         hdip:req.body.hdip,
+         hdop:req.body.hdop
+        }, null, function (err, docs) {
+        if (err){
+            console.log(err)
+        }
+        res.status(200).json({message : "Successfully updated"})
+    });
 }
 
 module.exports={signup,signin,addqn,deleteqn,getqn,getqns,updateqn}

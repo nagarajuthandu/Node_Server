@@ -1,6 +1,7 @@
 let db=require("../configs/db")
 let {user}=require("../models/user")
 let {questions}=require("../models/question")
+let {results}=require("../models/results")
 let jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt");
 let mongoose=require("mongoose")
@@ -104,5 +105,18 @@ let run=function(req,res)
          
 }
 
+let save=function(req,res){
+   
+    console.log(req.body)
+    // const results1=new results({
+    //     qid : req.body.qid,
+    //     code : req.body.code,
+    //     output : req.body.output,
+    //     score : req.body.score
+    // })
+    // results1.save().then(results=>res.status(200))
+    
+    
+}
 
-module.exports={signup,signin,users,run,getqn}
+module.exports={signup,signin,users,run,getqn,save}
