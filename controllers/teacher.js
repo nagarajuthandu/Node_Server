@@ -1,6 +1,7 @@
 let db=require("../configs/db")
 let {teacher}=require("../models/teacher")
 let {questions}=require("../models/question")
+let {results}=require("../models/results")
 let jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt");
 let mongoose=require("mongoose")
@@ -94,4 +95,8 @@ let updateqn = function(req,res){
     });
 }
 
-module.exports={signup,signin,addqn,deleteqn,getqn,getqns,updateqn}
+let getresults = function(req,res){
+    results.find({}).then(results=>{res.json(results)}).catch(error=>{console.log(error)})
+}
+
+module.exports={signup,signin,addqn,deleteqn,getqn,getqns,updateqn,getresults}

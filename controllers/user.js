@@ -108,15 +108,20 @@ let run=function(req,res)
 let save=function(req,res){
    
     console.log(req.body)
-    // const results1=new results({
-    //     qid : req.body.qid,
-    //     code : req.body.code,
-    //     output : req.body.output,
-    //     score : req.body.score
-    // })
-    // results1.save().then(results=>res.status(200))
+    let { username,qid,question,language,code,input,score,output}=req.body
+    const results1=new results()
+    results1.username=username;
+    results1.qid=qid;
+    results1.question=question
+    results1.language=language;
+    results1.code=code;
+    results1.input=input;
+    results1.score=score;
+    results1.output=output;
+    results1.save().then(results=>res.status(200))
     
     
 }
+
 
 module.exports={signup,signin,users,run,getqn,save}
